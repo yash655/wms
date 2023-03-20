@@ -54,44 +54,309 @@
   </head>
 
   <body>
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
-       
+        <!-- Menu -->
+        {% comment %} {% include '../template/html/layouts-without-navbar.html' %} {% endcomment %}
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="{% url 'dash' %}" class="app-brand-link ">
+              <img  src="{% static 'assets/img/favicon/wms1.ico' %}" />
+
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">wms</span>
+            </a>
+
+         
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item ">
+              <a href="{% url 'dash' %}" class="menu-link ">
+                <i class="menu-icon tf-icons bx bx-home-circle  "  ></i>
+                <div data-i18n="Analytics">Dashboard</div>
+              </a>
+            </li>
+
+            <!-- Layouts -->
+           
+
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Pages</span>
+            </li>
+            <li class="menu-item ">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts">Category</div>
+              </a>
+
+              <ul class="menu-sub ">
+                <li class="menu-item active">
+                  <a href="{% url 'CategoryCreateView' %}" class="menu-link">
+                    <div data-i18n="Without menu">Add Category</div>
+                  </a>
+                </li>
+                <li class="menu-item active">
+                  <a href="{% url 'CategoryListView' %}" class="menu-link">
+                    <div data-i18n="Without navbar">Category List</div>
+                  </a>
+                </li>
+              
+              </ul>
+            </li>
+
+
+
+
+
+            <li class="menu-item ">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts">Products</div>
+              </a>
+
+              <ul class="menu-sub ">
+                <li class="menu-item active">
+                  <a href="{% url 'ProductCreateView' %}" class="menu-link">
+                    <div data-i18n="Without menu">Add Product</div>
+                  </a>
+                </li>
+                <li class="menu-item active">
+                  <a href="{% url 'ProductListView' %}" class="menu-link">
+                    <div data-i18n="Without navbar">Product List</div>
+                  </a>
+                </li>
+              
+              </ul>
+            </li>
+            <li class="menu-item">
+              {% if not request.user.is_worker %}
+              <!-- Components -->
+              <li class="menu-header small text-uppercase"><span class="menu-header-text">Buyer/Supplier</span></li>
+              <!-- Cards -->
+              <li class="menu-item ">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                  <i class="menu-icon tf-icons bx bx-layout"></i>
+                  <div data-i18n="Layouts">Buyers</div>
+                </a>
+
+                <ul class="menu-sub ">
+                  <li class="menu-item active">
+                    <a href="{% url 'BuyerCreateView' %}" class="menu-link">
+                      <div data-i18n="Without menu">Add Buyers</div>
+                    </a>
+                  </li>
+                  <li class="menu-item active">
+                    <a href="{% url 'BuyerrListView' %}" class="menu-link">
+                      <div data-i18n="Without navbar">Buyers List</div>
+                    </a>
+                  </li>
+                
+                </ul>
+              </li>
+
+              <li class="menu-item ">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                  <i class="menu-icon tf-icons bx bx-layout"></i>
+                  <div data-i18n="Layouts">Supplier</div>
+                </a>
+
+                <ul class="menu-sub ">
+                  <li class="menu-item active">
+                    <a href="{% url 'SupplierCreateView' %}" class="menu-link">
+                      <div data-i18n="Without menu">Add Supplier</div>
+                    </a>
+                  </li>
+                  <li class="menu-item active">
+                    <a href="{% url 'SupplierListView' %}" class="menu-link">
+                      <div data-i18n="Without navbar">Supplier List</div>
+                    </a>
+                  </li>
+                
+                </ul>
+              </li>
+
+              <li class="menu-header small text-uppercase"><span class="menu-header-text">Manager/Worker</span></li>
+              <!-- Cards -->
+              {% if request.user.is_superuser%}
+              <li class="menu-item ">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                  <i class="menu-icon tf-icons bx bx-layout"></i>
+                  <div data-i18n="Layouts">Manager</div>
+                </a>
+
+                <ul class="menu-sub ">
+                  <li class="menu-item active">
+                    <a href="{% url 'BuyerCreateView' %}" class="menu-link">
+                      <div data-i18n="Without menu">Add Manager</div>
+                    </a>
+                  </li>
+                  <li class="menu-item active">
+                    <a href="{% url 'BuyerrListView' %}" class="menu-link">
+                      <div data-i18n="Without navbar">Manager List</div>
+                    </a>
+                  </li>
+                
+                </ul>
+              </li>
+              {% endif%}
+            
+
+              <li class="menu-item ">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                  <i class="menu-icon tf-icons bx bx-layout"></i>
+                  <div data-i18n="Layouts">Worker</div>
+                </a>
+
+                <ul class="menu-sub ">
+                  <li class="menu-item active">
+                    <a href="{% url 'worker_signup' %}" class="menu-link">
+                      <div data-i18n="Without menu">Add Worker</div>
+                    </a>
+                  </li>
+                  <li class="menu-item active">
+                    <a href="{% url 'worker' %}" class="menu-link">
+                      <div data-i18n="Without menu">Worker List</div>
+                    </a>
+                  </li>
+      
+                
+                </ul>
+              </li>
+              <!-- User interface -->
+              {% endif %}
+
+            <!-- Forms & Tables -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">INVOICE</span></li>
+            <!-- Forms -->
+            
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <div data-i18n="Form Layouts">Purchase Order</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item active">
+                  <a href="{% url 'PurchaseCreateView' %}" class="menu-link">
+                    <div data-i18n="Vertical Form">Add Purchase Order</div>
+                  </a>
+                </li>
+                <li class="menu-item active">
+                  <a href="{% url 'PurchaseListView' %}" class="menu-link">
+                    <div data-i18n="Horizontal Form">Purchase Order List</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <div data-i18n="Form Layouts">Sales Order</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item active">
+                  <a href="{% url 'SalesCreateView' %}" class="menu-link">
+                    <div data-i18n="Vertical Form">Add Sales Order</div>
+                  </a>
+                </li>
+                <li class="menu-item active">
+                  <a href="{% url 'SalesListView' %}" class="menu-link">
+                    <div data-i18n="Horizontal Form">Sales Order List</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <!-- Tables -->
+
+            <!-- Misc -->
+            
+          
+          </ul>
+        </aside>
+       <!--/Menu-->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <nav
+          class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+          id="layout-navbar"
+        >
+          <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+              <i class="bx bx-menu bx-sm"></i>
+            </a>
+          </div>
+
+          <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+           
+
+            <ul class="navbar-nav flex-row align-items-center ms-auto">
+         
+              
+              
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                      <div class="avatar avatar-online">
+                        <img src="{% static 'assets/img/avatars/1.png' %}" alt class="w-px-40 h-auto rounded-circle" />
+                      </div>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="javascript:void(0);"
+                      ><i class="bx bx-edit-alt me-1"></i> profile</a
+                    >
+                    <a class="dropdown-item" href="javascript:void(0);"
+                      ><i class="bx bx-trash me-1"></i> log out</a
+                    >
+                  </div>
+                </div>
+              <!--/ User -->
+            </ul>
+          </div>
+        </nav>
+
+
+          <!-- / Navbar -->
 
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"> Buyer List</h4>
-
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Product</h4>
 
               <!-- Hoverable Table rows -->
               <div class="card">
-                <h5 class="card-header">Buyer List</h5>
+                <h5 class="card-header">product </h5>
                 <div class="table-responsive text-nowrap">
-                  {% if products %}
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th>Product name</th>
-                        <th>Category Name</th>
-                        <th>Price</th>
+                        <th>Product Name</th>
+                        <th>qty</th>
 
-                        
+                        <th>Category </th>
+
+                        <th>price</th>
                         <th>Actions</th>
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                      
                       {% for i in products  %}
-                      <tr  onClick="parent.location='{% url "ProductListView"  %}'" >
+                      <tr >
                         
                         
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> 
                           <img src="{{i.image.url}}" alt="reload" height="32" width="32" class="me-2">
                          <strong>{{i.product_name}}</strong></td>
+                           <td >{{i.qty}}</td>
+
                         <td ><a class="badge bg-label-info me-1">{{i.category}}</a></td>
                         <td >{{i.sale_price}}</td>
                         
@@ -104,10 +369,10 @@
                               <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
+                              <a class="dropdown-item" href="{% url 'ProductUpdateView'  i.id  %}"
                                 ><i class="bx bx-edit-alt me-1"></i> Edit</a
                               >
-                              <a class="dropdown-item" href="javascript:void(0);"
+                              <a class="dropdown-item" href="{% url 'ProductDeleteView'  i.id %}"
                                 ><i class="bx bx-trash me-1"></i> Delete</a
                               >
                             </div>
@@ -116,33 +381,57 @@
                       
                       </a>
                       </tr>  
+                      {% empty%}
+                      <tr><td>no data founf</td><tr>
                       {% endfor %}
-                    
-                      
                     </tbody>
                   </table>
-                  {% else %}
-                  <h1 align="center"> no product found </h1>
-                   {% endif %}
-                   
                 </div>
               </div>
               <!--/ Hoverable Table rows -->
 
+            
 
-              
 
-             
 
+
+   
             </div>
             <!-- / Content -->
 
-           
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>2023
+                  
+                  <a  target="_blank" class="footer-link fw-bolder"></a>
+                </div>
+                <div>
+                  <a  class="footer-link me-4" target="_blank">License</a>
+                  <a  target="_blank" class="footer-link me-4">More Themes</a>
+
+                  <a  target="_blank" class="footer-link me-4">Documentation</a>
+
+                  <a target="_blank" class="footer-link me-4">Support</a>
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
           <!-- Content wrapper -->
         </div>
         <!-- / Layout page -->
       </div>
 
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
  
 
    
@@ -166,5 +455,6 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
   </body>
 </html>

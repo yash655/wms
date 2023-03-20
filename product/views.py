@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.generic import ListView
 from .models import *
 from django.views.generic.edit import CreateView,DeleteView,UpdateView
@@ -7,6 +7,8 @@ from django.views.generic import DetailView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .forms import *
+from django.shortcuts import render,HttpResponseRedirect
+
 # Create your views here.
    
 #manager requrid
@@ -15,18 +17,19 @@ class BuyerCreateView(CreateView):
     form_class = BuyerForm
 
     template_name = 'product/form.html'
-    success_url = '/product/buyer_list.html' #add buyer list 
+    success_url = '/product/BuyerrListView'  
    
 class BuyerDeleteView(DeleteView):
     model = Buyer
-    template_name = 'product/delete.html'
-    success_url = 'login'    
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)
+    success_url = '/product/BuyerrListView'  
 
 class BuyerUpdateView(UpdateView):
     model = Buyer
     form_class = BuyerForm
     template_name = 'product/form.html'
-    success_url = 'login'
+    success_url = '/product/BuyerrListView'  
     
 class BuyerrListView(ListView):
     model = Buyer
@@ -54,18 +57,19 @@ class SupplierCreateView(CreateView):
     model = Supplier
     form_class = SupplierForm
     template_name = 'product/form.html'
-    success_url = 'login'
+    success_url = '/product/SupplierListView'  
    
 class SupplierDeleteView(DeleteView):
     model = Supplier
-    template_name = 'product/delete.html'
-    success_url = 'login'    
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)   
+    success_url = '/product/SupplierListView'  
 
 class SupplierUpdateView(UpdateView):
     model = Supplier
     form_class = SupplierForm
     template_name = 'product/form.html'
-    success_url = 'login'
+    success_url = '/product/SupplierListView'  
     
 class SupplierListView(ListView):
     model = Supplier
@@ -77,7 +81,7 @@ class SupplierDetailView(DetailView):
     model = Supplier
     form_class = SupplierForm
     context_object_name = 't'
-    template_name = 'product/profile_detail.html'
+    template_name = 'product/profile_detail_supplier.html'
   
       
       
@@ -87,25 +91,26 @@ class SupplierDetailView(DetailView):
    
 class CategoryCreateView(CreateView):
     model = Category
-    fields = ['id', 'c_name']
+    fields = ['id', 'c_name','icon']
     template_name = 'product/category_form.html'
-    success_url = '/crud/login'   
+    success_url = '/product/CategoryListView'  
 
 class CategoryDeleteView(DeleteView):
     model = Category
-    template_name = 'product/delete.html'
-    success_url = 'login' 
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)    
+    success_url = '/product/CategoryListView'  
 
 class CategoryUpdateView(UpdateView):
     model = Category
-    fields = ['id', 'c_name']
+    fields = ['id', 'c_name','icon']
     template_name = 'product/category_form.html'
-    success_url = '/crud/login'      
+    success_url = '/product/CategoryListView'  
  
 class CategoryListView(ListView):
     model = Category
     template_name = 'product/category_list.html'
-    supplier = Category.objects.all().values()
+    category = Category.objects.all().values()
     context_object_name = 'category'
             
 
@@ -115,19 +120,20 @@ class ProductCreateView(CreateView):
     form_class = ProductForm
     # fields = '__all__'
     template_name = 'product/Product_form.html'
-    success_url = '/crud/login'  
+    success_url = '/product/ProductListView'  
    
     
 class ProductDeleteView(DeleteView):
     model = Products
-    template_name = 'product/delete.html'
-    success_url = 'login'   
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)
+    success_url = '/product/ProductListView'  
       
 class ProductUpdateView(UpdateView):
     model = Products
     form_class = ProductForm
     template_name = 'product/Product_form.html'
-    success_url = '/crud/login'     
+    success_url = '/product/ProductListView'  
        
 class ProductListView(ListView):
     model = Products
@@ -135,3 +141,149 @@ class ProductListView(ListView):
     products = Products.objects.all().values()
     context_object_name = 'products'
   
+  
+class PurchaseCreateView(CreateView):
+    model = Purchase
+    form_class = PurchaseForm
+    # fields = '__all__'
+    def form_valid(self, form):
+        # Modify the form data here
+        form.instance.user = self.request.user
+        product = form.cleaned_data['products']
+       
+        p = Products.objects.get(product_name=product)
+        print(p)
+       
+        qty = form.cleaned_data['qty']
+        pq = Products.objects.filter(product_name=product).update(qty=p.qty+qty )
+
+        form.instance.total = p.avg_buy_price  * qty
+        #q = form.cleaned_data.get('qty')
+        # Call the parent form_valid() method to save the object to the database
+        return super().form_valid(form) 
+  
+
+
+
+    template_name = 'product/purchase_form.html'
+    success_url = '/product/PurchaseListView'  
+   
+   
+def create_in1(request, pk):
+    supplier = Supplier.objects.get(id=pk)
+    purchase = Purchase.objects.filter(supplier=supplier)
+    formset = PurchaseFormSet(request.POST or None)
+    print(request.method)
+    if request.method == "POST":
+        print(supplier.id,'he')
+
+    
+        formset.instance = supplier
+        print('hello1')
+        formset.save()
+        return redirect('/product/create_in1/',pk=supplier.id)
+        
+    context = {
+        "formset": formset,
+        "supplier": supplier,
+        "purchase": purchase
+    }
+
+    return render(request, "partials/createpurchase_form.html", context)
+
+
+def create_in2(request):
+    form = PurchaseForm()
+    context = {
+        "form": form
+    }
+    return render(request, "partials/purchase_form.html", context)
+
+
+class PurchaseListView(ListView):
+    model = Purchase
+    template_name = 'product/Purchase_list.html'
+    purchase = Purchase.objects.all().values()
+    context_object_name = 'purchase'
+  
+
+class PurchaseDetailView(DetailView):
+    model = Purchase
+    form_class = PurchaseForm
+    context_object_name = 'form'
+    template_name = 'product/purchase_detail.html'
+  
+  
+class PurchaseDeleteView(DeleteView):
+    model = Purchase
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)
+    success_url = '/product/PurchaseListView'  
+
+class PurchaseUpdateView(UpdateView):
+    model = Purchase
+    form_class = PurchaseForm
+    template_name = 'product/purchase_form.html'
+    success_url = '/product/PurchaseListView'  
+     
+  
+  
+class SalesCreateView(CreateView):
+    model = Sales
+    form_class = SalesForm
+    # fields = '__all__'
+    def form_valid(self, form):
+        # Modify the form data here
+        form.instance.user = self.request.user
+        product = form.cleaned_data['products']
+       
+        p = Products.objects.get(product_name=product)
+        print(p)
+       
+        qty = form.cleaned_data['qty']
+        pq = Products.objects.filter(product_name=product).update(qty=p.qty-qty )
+
+        form.instance.total = p.sale_price  * qty
+        #q = form.cleaned_data.get('qty')
+        # Call the parent form_valid() method to save the object to the database
+        return super().form_valid(form) 
+  
+
+
+
+    template_name = 'product/Sales_form.html'
+    success_url = '/product/SalesListView'  
+ 
+ 
+ 
+class SalesListView(ListView):
+    model = Sales
+    
+    template_name = 'product/Sales_list.html'
+    sales = Sales.objects.all().values()
+    context_object_name = 'sales'
+  
+
+class SalesDetailView(DetailView):
+    model = Sales
+    form_class = SalesForm
+    context_object_name = 'form'
+    template_name = 'product/Sales_detail.html'
+  
+  
+class SalesDeleteView(DeleteView):
+    model = Sales
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)
+    success_url = '/product/SalesListView'  
+
+class SalesUpdateView(UpdateView):
+    model = Sales
+    form_class = SalesForm
+    template_name = 'product/Sales_form.html'
+    success_url = '/product/SalesListView'  
+     
+def sales_update(request,id):
+    sales = Sales.objects.filter(id=id).update(Status='Dispatch ')
+    return HttpResponseRedirect('/product/SalesListView')
+
