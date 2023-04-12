@@ -31,6 +31,7 @@ class Supplier(models.Model):
 
 
 class Products(models.Model):
+    updatedby = models.CharField(max_length=100,null=True)
     product_name = models.CharField(max_length=100)
     qty = models.IntegerField(default=0)
     avg_buy_price = models.IntegerField()

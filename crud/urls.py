@@ -23,6 +23,9 @@ urlpatterns = [
 
     
 
+    path('UserUpdateView/<int:pk>',UserUpdateView.as_view(),name='UserUpdateView'), 
+    path('UserDetailView/<int:pk>',UserDetailView.as_view(),name='UserDetailView'), 
+
 
     path('dash/',views.dash,name='dash'),
 

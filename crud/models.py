@@ -5,8 +5,8 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     mob = models.IntegerField(null=True, blank=True)
     salary = models.FloatField(null=True, blank=True)
-    gender = models.CharField(max_length=100)
-    email = models.EmailField(('email_address'),blank=False)
+    address = models.CharField(max_length=100)
+    email = models.EmailField(('email_address'),blank=False)    
     is_manager = models.BooleanField(default=False)
     is_worker = models.BooleanField(default=False)
     

@@ -12,6 +12,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 from product.models import *
 from django.db.models import *
+from django.urls import reverse_lazy
+
 
 # Create your views here.
 class ManagerSignUpView(CreateView):
@@ -65,8 +67,8 @@ class WorkerSignUpView(CreateView):
   
 
 class UserLoginView(LoginView):
-    # template_name = 'template/html/auth-login-basic.html'
-    template_name = 'product/profile_user.html'
+    template_name = 'template/html/auth-login-basic.html'
+    # template_name = 'product/profile_user_changes.html'
 
 
     
@@ -91,27 +93,31 @@ class AdminDashBoard(ListView):
         category = Category.objects.all().values()
         buyer = Buyer.objects.all().values()
         supplier = Supplier.objects.all().values()
+        qty = Sales.objects.aggregate(total1 = Sum('qty'),tsales = Sum('total'),trn = Max('id') )
+        pur = Purchase.objects.aggregate(totalpur = Max('id'))
+        x = Products.objects.aggregate(tqty = Sum('qty'))
 
-        return render(request, 'product/admin_dashboard.html', {'product':product, 'category':category,'buyer':buyer,'supplier':supplier}) 
-
+        
+        return render(request, 'product/admin_dashboard.html', {'pur':pur,'x':x,'qty':qty,'product':product, 'category':category,'buyer':buyer,'supplier':supplier}) 
 
     
 class ManagerDashBoard(ListView):
 
 
    
-    def get(self, request, *args, **kwargs):
+   def get(self, request, *args, **kwargs):
         product = Products.objects.all().values()
         category = Category.objects.all().values()
         buyer = Buyer.objects.all().values()
         supplier = Supplier.objects.all().values()
         qty = Sales.objects.aggregate(total1 = Sum('qty'),tsales = Sum('total'),trn = Max('id') )
+        pur = Purchase.objects.aggregate(totalpur = Max('id'))
         x = Products.objects.aggregate(tqty = Sum('qty'))
 
         
-        print(qty)
-        return render(request, 'product/manager_dashbord.html', {'x':x,'qty':qty,'product':product, 'category':category,'buyer':buyer,'supplier':supplier}) 
+        return render(request, 'product/manager_dashbord.html', {'pur':pur,'x':x,'qty':qty,'product':product, 'category':category,'buyer':buyer,'supplier':supplier}) 
 
+ 
 class WorkerDashBoard(ListView):
 
 
@@ -177,9 +183,23 @@ def dash(request):
                 return HttpResponseRedirect('/crud/managerDashboard/')
 
             elif request.user.is_superuser:
-                return HttpResponseRedirect('/crud/adminDashboard/')
+                return HttpResponseRedirect('/crud/AdminDashBoard/')
 
             else:
                 return HttpResponseRedirect('/crud/WorkerDashBoard/')
 
 
+
+class UserUpdateView(UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    template_name = 'product/profile_user_changes.html'
+    def get_success_url(self):
+        return reverse_lazy('UserDetailView', kwargs={'pk': self.object.pk}) 
+    
+    
+class UserDetailView(DetailView):
+    model = User
+    form_class = UserUpdateForm
+    context_object_name = 'form'
+    template_name = 'product/profile_user.html'

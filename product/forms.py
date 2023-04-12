@@ -24,6 +24,14 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Products
         fields =["product_name","category","qty","sale_price","avg_buy_price","image"]        
+    # @transaction.atomic
+    # def save(self):
+    #     Products = super().save(commit=False)
+    #     print(self.request.user,'hello')
+    #     Products.updatedby = self.request.user
+        
+    #     Products.save()
+    #     return Products
 
 class PurchaseForm(forms.ModelForm):
     class Meta:
@@ -44,5 +52,5 @@ PurchaseFormSet = inlineformset_factory(
 class SalesForm(forms.ModelForm):
     class Meta:
         model = Sales
-        fields =["Buyer","products","qty","total",'Status']    
+        fields =["Buyer","products","qty","total"]    
  

@@ -40,7 +40,15 @@ class BuyerrListView(ListView):
 class BuyerDetailView(DetailView):
     model = Buyer
     form_class = BuyerForm
-    context_object_name = 't'
+    def get_context_data(self, **kwargs):
+        context =  super().get_context_data(**kwargs)
+       
+        buyer = self.object
+        sales = buyer.sales_set.all()
+        context['sales'] = sales
+        return context
+
+
     template_name = 'product/profile_detail.html'
      
       
@@ -80,7 +88,13 @@ class SupplierListView(ListView):
 class SupplierDetailView(DetailView):
     model = Supplier
     form_class = SupplierForm
-    context_object_name = 't'
+    def get_context_data(self, **kwargs):
+        context =  super().get_context_data(**kwargs)
+       
+        Supplier = self.object
+        Purchase = Supplier.purchase_set.all()
+        context['Purchase'] = Purchase
+        return context    
     template_name = 'product/profile_detail_supplier.html'
   
       
@@ -152,7 +166,6 @@ class PurchaseCreateView(CreateView):
         product = form.cleaned_data['products']
        
         p = Products.objects.get(product_name=product)
-        print(p)
        
         qty = form.cleaned_data['qty']
         pq = Products.objects.filter(product_name=product).update(qty=p.qty+qty )
@@ -173,13 +186,10 @@ def create_in1(request, pk):
     supplier = Supplier.objects.get(id=pk)
     purchase = Purchase.objects.filter(supplier=supplier)
     formset = PurchaseFormSet(request.POST or None)
-    print(request.method)
     if request.method == "POST":
-        print(supplier.id,'he')
 
     
         formset.instance = supplier
-        print('hello1')
         formset.save()
         return redirect('/product/create_in1/',pk=supplier.id)
         
@@ -238,7 +248,6 @@ class SalesCreateView(CreateView):
         product = form.cleaned_data['products']
        
         p = Products.objects.get(product_name=product)
-        print(p)
        
         qty = form.cleaned_data['qty']
         pq = Products.objects.filter(product_name=product).update(qty=p.qty-qty )

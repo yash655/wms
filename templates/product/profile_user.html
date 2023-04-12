@@ -126,225 +126,224 @@
 
 
 <!-- Menu -->
-
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-    <div class="app-brand demo">
-      <a href="{% url 'dash' %}" class="app-brand-link ">
-        <img  src="{% static 'assets/img/favicon/wms1.ico' %}" />
+  <div class="app-brand demo">
+    <a href="{% url 'dash' %}" class="app-brand-link ">
+      <img  src="{% static 'assets/img/favicon/wms1.ico' %}" />
 
-        <span class="app-brand-text demo menu-text fw-bolder ms-2">wms</span>
+      <span class="app-brand-text demo menu-text fw-bolder ms-2">wms</span>
+    </a>
+
+ 
+  </div>
+
+  <div class="menu-inner-shadow"></div>
+
+  <ul class="menu-inner py-1">
+    <!-- Dashboard -->
+    <li class="menu-item ">
+      <a href="{% url 'dash' %}" class="menu-link ">
+        <i class="menu-icon tf-icons bx bx-home-circle  "  ></i>
+        <div data-i18n="Analytics">Dashboard</div>
+      </a>
+    </li>
+
+    <!-- Layouts -->
+   
+
+    <li class="menu-header small text-uppercase">
+      <span class="menu-header-text">Pages</span>
+    </li>
+    <li class="menu-item ">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-layout"></i>
+        <div data-i18n="Layouts">Category</div>
       </a>
 
-   
-    </div>
+      <ul class="menu-sub ">
+        <li class="menu-item active">
+          <a href="{% url 'CategoryCreateView' %}" class="menu-link">
+            <div data-i18n="Without menu">Add Category</div>
+          </a>
+        </li>
+        <li class="menu-item active">
+          <a href="{% url 'CategoryListView' %}" class="menu-link">
+            <div data-i18n="Without navbar">Category List</div>
+          </a>
+        </li>
+      
+      </ul>
+    </li>
 
-    <div class="menu-inner-shadow"></div>
 
-    <ul class="menu-inner py-1">
-      <!-- Dashboard -->
-      <li class="menu-item ">
-        <a href="{% url 'dash' %}" class="menu-link ">
-          <i class="menu-icon tf-icons bx bx-home-circle  "  ></i>
-          <div data-i18n="Analytics">Dashboard</div>
-        </a>
-      </li>
 
-      <!-- Layouts -->
-     
 
-      <li class="menu-header small text-uppercase">
-        <span class="menu-header-text">Pages</span>
-      </li>
+
+    <li class="menu-item ">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-layout"></i>
+        <div data-i18n="Layouts">Products</div>
+      </a>
+
+      <ul class="menu-sub ">
+        <li class="menu-item active">
+          <a href="{% url 'ProductCreateView' %}" class="menu-link">
+            <div data-i18n="Without menu">Add Product</div>
+          </a>
+        </li>
+        <li class="menu-item active">
+          <a href="{% url 'ProductListView' %}" class="menu-link">
+            <div data-i18n="Without navbar">Product List</div>
+          </a>
+        </li>
+      
+      </ul>
+    </li>
+    <li class="menu-item">
+      {% if not request.user.is_worker %}
+      <!-- Components -->
+      <li class="menu-header small text-uppercase"><span class="menu-header-text">Buyer/Supplier</span></li>
+      <!-- Cards -->
       <li class="menu-item ">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bx-layout"></i>
-          <div data-i18n="Layouts">Category</div>
+          <div data-i18n="Layouts">Buyers</div>
         </a>
 
         <ul class="menu-sub ">
           <li class="menu-item active">
-            <a href="{% url 'CategoryCreateView' %}" class="menu-link">
-              <div data-i18n="Without menu">Add Category</div>
+            <a href="{% url 'BuyerCreateView' %}" class="menu-link">
+              <div data-i18n="Without menu">Add Buyers</div>
             </a>
           </li>
           <li class="menu-item active">
-            <a href="{% url 'CategoryListView' %}" class="menu-link">
-              <div data-i18n="Without navbar">Category List</div>
+            <a href="{% url 'BuyerrListView' %}" class="menu-link">
+              <div data-i18n="Without navbar">Buyers List</div>
             </a>
           </li>
         
         </ul>
       </li>
 
-
-
-
-
       <li class="menu-item ">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bx-layout"></i>
-          <div data-i18n="Layouts">Products</div>
+          <div data-i18n="Layouts">Supplier</div>
         </a>
 
         <ul class="menu-sub ">
           <li class="menu-item active">
-            <a href="{% url 'ProductCreateView' %}" class="menu-link">
-              <div data-i18n="Without menu">Add Product</div>
+            <a href="{% url 'SupplierCreateView' %}" class="menu-link">
+              <div data-i18n="Without menu">Add Supplier</div>
             </a>
           </li>
           <li class="menu-item active">
-            <a href="{% url 'ProductListView' %}" class="menu-link">
-              <div data-i18n="Without navbar">Product List</div>
+            <a href="{% url 'SupplierListView' %}" class="menu-link">
+              <div data-i18n="Without navbar">Supplier List</div>
             </a>
           </li>
         
         </ul>
       </li>
-      <li class="menu-item">
-        {% if not request.user.is_worker %}
-        <!-- Components -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Buyer/Supplier</span></li>
-        <!-- Cards -->
-        <li class="menu-item ">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-layout"></i>
-            <div data-i18n="Layouts">Buyers</div>
-          </a>
 
-          <ul class="menu-sub ">
-            <li class="menu-item active">
-              <a href="{% url 'BuyerCreateView' %}" class="menu-link">
-                <div data-i18n="Without menu">Add Buyers</div>
-              </a>
-            </li>
-            <li class="menu-item active">
-              <a href="{% url 'BuyerrListView' %}" class="menu-link">
-                <div data-i18n="Without navbar">Buyers List</div>
-              </a>
-            </li>
-          
-          </ul>
-        </li>
-
-        <li class="menu-item ">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-layout"></i>
-            <div data-i18n="Layouts">Supplier</div>
-          </a>
-
-          <ul class="menu-sub ">
-            <li class="menu-item active">
-              <a href="{% url 'SupplierCreateView' %}" class="menu-link">
-                <div data-i18n="Without menu">Add Supplier</div>
-              </a>
-            </li>
-            <li class="menu-item active">
-              <a href="{% url 'SupplierListView' %}" class="menu-link">
-                <div data-i18n="Without navbar">Supplier List</div>
-              </a>
-            </li>
-          
-          </ul>
-        </li>
-
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Manager/Worker</span></li>
-        <!-- Cards -->
-        {% if request.user.is_superuser%}
-        <li class="menu-item ">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-layout"></i>
-            <div data-i18n="Layouts">Manager</div>
-          </a>
-
-          <ul class="menu-sub ">
-            <li class="menu-item active">
-              <a href="{% url 'BuyerCreateView' %}" class="menu-link">
-                <div data-i18n="Without menu">Add Manager</div>
-              </a>
-            </li>
-            <li class="menu-item active">
-              <a href="{% url 'BuyerrListView' %}" class="menu-link">
-                <div data-i18n="Without navbar">Manager List</div>
-              </a>
-            </li>
-          
-          </ul>
-        </li>
-        {% endif%}
-      
-
-        <li class="menu-item ">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-layout"></i>
-            <div data-i18n="Layouts">Worker</div>
-          </a>
-
-          <ul class="menu-sub ">
-            <li class="menu-item active">
-              <a href="{% url 'worker_signup' %}" class="menu-link">
-                <div data-i18n="Without menu">Add Worker</div>
-              </a>
-            </li>
-            <li class="menu-item active">
-              <a href="{% url 'worker' %}" class="menu-link">
-                <div data-i18n="Without menu">Worker List</div>
-              </a>
-            </li>
-
-          
-          </ul>
-        </li>
-        <!-- User interface -->
-        {% endif %}
-
-      <!-- Forms & Tables -->
-      <li class="menu-header small text-uppercase"><span class="menu-header-text">INVOICE</span></li>
-      <!-- Forms -->
-      
-      <li class="menu-item">
+      <li class="menu-header small text-uppercase"><span class="menu-header-text">Manager/Worker</span></li>
+      <!-- Cards -->
+      {% if request.user.is_superuser%}
+      <li class="menu-item ">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-detail"></i>
-          <div data-i18n="Form Layouts">Purchase Order</div>
+          <i class="menu-icon tf-icons bx bx-layout"></i>
+          <div data-i18n="Layouts">Manager</div>
         </a>
-        <ul class="menu-sub">
+
+        <ul class="menu-sub ">
           <li class="menu-item active">
-            <a href="{% url 'PurchaseCreateView' %}" class="menu-link">
-              <div data-i18n="Vertical Form">Add Purchase Order</div>
+            <a href="{% url 'manager_signup' %}" class="menu-link">
+              <div data-i18n="Without menu">Add Manager</div>
             </a>
           </li>
           <li class="menu-item active">
-            <a href="{% url 'PurchaseListView' %}" class="menu-link">
-              <div data-i18n="Horizontal Form">Purchase Order List</div>
+            <a href="{% url 'ManagerListView' %}" class="menu-link">
+              <div data-i18n="Without navbar">Manager List</div>
             </a>
           </li>
+        
         </ul>
       </li>
-
-      <li class="menu-item">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-detail"></i>
-          <div data-i18n="Form Layouts">Sales Order</div>
-        </a>
-        <ul class="menu-sub">
-          <li class="menu-item active">
-            <a href="{% url 'SalesCreateView' %}" class="menu-link">
-              <div data-i18n="Vertical Form">Add Sales Order</div>
-            </a>
-          </li>
-          <li class="menu-item active">
-            <a href="{% url 'SalesListView' %}" class="menu-link">
-              <div data-i18n="Horizontal Form">Sales Order List</div>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <!-- Tables -->
-
-      <!-- Misc -->
-      
+      {% endif%}
     
-    </ul>
-  </aside>
+
+      <li class="menu-item ">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bx-layout"></i>
+          <div data-i18n="Layouts">Worker</div>
+        </a>
+
+        <ul class="menu-sub ">
+          <li class="menu-item active">
+            <a href="{% url 'worker_signup' %}" class="menu-link">
+              <div data-i18n="Without menu">Add Worker</div>
+            </a>
+          </li>
+          <li class="menu-item active">
+            <a href="{% url 'worker' %}" class="menu-link">
+              <div data-i18n="Without menu">Worker List</div>
+            </a>
+          </li>
+
+        
+        </ul>
+      </li>
+      <!-- User interface -->
+      {% endif %}
+
+    <!-- Forms & Tables -->
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">INVOICE</span></li>
+    <!-- Forms -->
+    
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-detail"></i>
+        <div data-i18n="Form Layouts">Purchase Order</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item active">
+          <a href="{% url 'PurchaseCreateView' %}" class="menu-link">
+            <div data-i18n="Vertical Form">Add Purchase Order</div>
+          </a>
+        </li>
+        <li class="menu-item active">
+          <a href="{% url 'PurchaseListView' %}" class="menu-link">
+            <div data-i18n="Horizontal Form">Purchase Order List</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-detail"></i>
+        <div data-i18n="Form Layouts">Sales Order</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item active">
+          <a href="{% url 'SalesCreateView' %}" class="menu-link">
+            <div data-i18n="Vertical Form">Add Sales Order</div>
+          </a>
+        </li>
+        <li class="menu-item active">
+          <a href="{% url 'SalesListView' %}" class="menu-link">
+            <div data-i18n="Horizontal Form">Sales Order List</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Tables -->
+
+    <!-- Misc -->
+    
+  
+  </ul>
+</aside>
 <!-- / Menu -->
 
     
@@ -357,459 +356,54 @@
 
 
 <!-- Navbar -->
+<nav
+class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+id="layout-navbar"
+>
+<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+  <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+    <i class="bx bx-menu bx-sm"></i>
+  </a>
+</div>
 
+<div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+ 
 
+  <ul class="navbar-nav flex-row align-items-center ms-auto">
 
-
-<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
-  
-
-  
-
-  
-
-      
-      
-      
-
-      
-      
-      <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
-        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-          <i class="bx bx-menu bx-sm"></i>
-        </a>
-      </div>
-      
-
-      <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-
-        
-        <!-- Search -->
-        <div class="navbar-nav align-items-center">
-          <div class="nav-item navbar-search-wrapper mb-0">
-            <a class="nav-item nav-link search-toggler px-0" href="javascript:void(0);">
-              <i class="bx bx-search bx-sm"></i>
-              <span class="d-none d-md-inline-block text-muted">Search (Ctrl+/)</span>
+    
+    
+      <div class="dropdown">
+        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+            <div class="avatar avatar-online">
+             <img src="data:image/png;base64,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"/>                                </div>
+        </button>
+        <div class="dropdown-menu">
+          
+            <a class="dropdown-item" href="{% url 'UserDetailView' request.user.id %}">
+              <div class="d-flex">
+                <div class="flex-shrink-0 me-3">
+                  <div class="avatar avatar-online">
+                    <img src="data:image/png;base64,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"/>                              </div>
+                </div>
+                <div class="flex-grow-1">
+                  <h5><span class="fw-semibold d-block text-primary">{{request.user}}</span><h5>
+                </div>
+              </div>
             </a>
-          </div>
+         
+          <a class="dropdown-item" href="{% url 'logout' %}"
+         
+          <a  class="dropdown-item" href="{% url 'logout' %}"
+            ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAXpJREFUSEvtll9OwkAQxr9p12e5idxAr+CzrsIBWuRRqgkm9pmkHgC08d0bADcoN8Ab6HvbNduyofwRdotNY0Kf2mZ2frs7880MoaaHauLif4H9wXuT7ORU97YoST7vu+150d7oxP3BsHHC2BgCTV3o0o5GnnvdVt9G4OeXcEQCt+bQfAURLnsO/8jeTZz4QTgBcC6AmSDc6a61BMaZrcCT1+H90mAAU8/lF7pgPwjFEbwzxlkWW6zvdXgWTxXjSq9aahV2KpNipuIp/6UsbVix9eV1r6I/j7EfvLUAGi4cGyXSts1oJdeGVgkRCaEtnZ57M12H7wQfVpWWKM/lG3mzF8xsNiHgTDd22+yMwcrJ+lWbVqlHh8vqtvJoxTiXTQ3Jpba6kJPcfVSUk2yHIrG/K5GTgtdSQH7RY9adKq1cR/BKkzCsZgKUS6zsIFDb6COzvGx1E4TXB4e3VO4YzVxFjcv2qFtaWRzPDxpvdUE6dqVOrON4n01t4B+8jhAudK2G7AAAAABJRU5ErkJggg=="/> 
+            Logout</a
+          >
         </div>
-        <!-- /Search -->
-        
-
-
-        
-
-        <ul class="navbar-nav flex-row align-items-center ms-auto">
-          
-          <!-- Language -->
-          <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
-            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-              <i class='fi fi-us fis rounded-circle fs-3 me-1'></i>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li>
-                <a class="dropdown-item" href="javascript:void(0);" data-language="en">
-                  <i class="fi fi-us fis rounded-circle fs-4 me-1"></i>
-                  <span class="align-middle">English</span>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="javascript:void(0);" data-language="fr">
-                  <i class="fi fi-fr fis rounded-circle fs-4 me-1"></i>
-                  <span class="align-middle">France</span>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="javascript:void(0);" data-language="de">
-                  <i class="fi fi-de fis rounded-circle fs-4 me-1"></i>
-                  <span class="align-middle">German</span>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="javascript:void(0);" data-language="pt">
-                  <i class="fi fi-pt fis rounded-circle fs-4 me-1"></i>
-                  <span class="align-middle">Portuguese</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <!--/ Language -->
-
-
-          
-
-          <!-- Style Switcher -->
-          <li class="nav-item me-2 me-xl-0">
-            <a class="nav-link style-switcher-toggle hide-arrow" href="javascript:void(0);">
-              <i class='bx bx-sm'></i>
-            </a>
-          </li>
-          <!--/ Style Switcher -->
-
-          <!-- Quick links  -->
-          <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-2 me-xl-0">
-            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-              <i class='bx bx-grid-alt bx-sm'></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end py-0">
-              <div class="dropdown-menu-header border-bottom">
-                <div class="dropdown-header d-flex align-items-center py-3">
-                  <h5 class="text-body mb-0 me-auto">Shortcuts</h5>
-                  <a href="javascript:void(0)" class="dropdown-shortcuts-add text-body" data-bs-toggle="tooltip" data-bs-placement="top" title="Add shortcuts"><i class="bx bx-sm bx-plus-circle"></i></a>
-                </div>
-              </div>
-              <div class="dropdown-shortcuts-list scrollable-container">
-                <div class="row row-bordered overflow-visible g-0">
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-calendar fs-4"></i>
-                    </span>
-                    <a href="app-calendar.html" class="stretched-link">Calendar</a>
-                    <small class="text-muted mb-0">Appointments</small>
-                  </div>
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-food-menu fs-4"></i>
-                    </span>
-                    <a href="app-invoice-list.html" class="stretched-link">Invoice App</a>
-                    <small class="text-muted mb-0">Manage Accounts</small>
-                  </div>
-                </div>
-                <div class="row row-bordered overflow-visible g-0">
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-user fs-4"></i>
-                    </span>
-                    <a href="app-user-list.html" class="stretched-link">User App</a>
-                    <small class="text-muted mb-0">Manage Users</small>
-                  </div>
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-check-shield fs-4"></i>
-                    </span>
-                    <a href="app-access-roles.html" class="stretched-link">Role Management</a>
-                    <small class="text-muted mb-0">Permission</small>
-                  </div>
-                </div>
-                <div class="row row-bordered overflow-visible g-0">
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-pie-chart-alt-2 fs-4"></i>
-                    </span>
-                    <a href="index.html" class="stretched-link">Dashboard</a>
-                    <small class="text-muted mb-0">User Profile</small>
-                  </div>
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-cog fs-4"></i>
-                    </span>
-                    <a href="pages-account-settings-account.html" class="stretched-link">Setting</a>
-                    <small class="text-muted mb-0">Account Settings</small>
-                  </div>
-                </div>
-                <div class="row row-bordered overflow-visible g-0">
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-help-circle fs-4"></i>
-                    </span>
-                    <a href="pages-help-center-landing.html" class="stretched-link">Help Center</a>
-                    <small class="text-muted mb-0">FAQs & Articles</small>
-                  </div>
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-window-open fs-4"></i>
-                    </span>
-                    <a href="modal-examples.html" class="stretched-link">Modals</a>
-                    <small class="text-muted mb-0">Useful Popups</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <!-- Quick links -->
-
-          <!-- Notification -->
-          <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1">
-            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-              <i class="bx bx-bell bx-sm"></i>
-              <span class="badge bg-danger rounded-pill badge-notifications">5</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end py-0">
-              <li class="dropdown-menu-header border-bottom">
-                <div class="dropdown-header d-flex align-items-center py-3">
-                  <h5 class="text-body mb-0 me-auto">Notification</h5>
-                  <a href="javascript:void(0)" class="dropdown-notifications-all text-body" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark all as read"><i class="bx fs-4 bx-envelope-open"></i></a>
-                </div>
-              </li>
-              <li class="dropdown-notifications-list scrollable-container">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                    <div class="d-flex">
-                      <div class="flex-shrink-0 me-3">
-                        <div class="avatar">
-                          <img src="{% static 'assets/img/avatars/1.png' %}" alt class="w-px-40 h-auto rounded-circle">
-                        </div>
-                      </div>
-                      <div class="flex-grow-1">
-                        <h6 class="mb-1">Congratulation Lettie 🎉</h6>
-                        <p class="mb-0">Won the monthly best seller gold badge</p>
-                        <small class="text-muted">1h ago</small>
-                      </div>
-                      <div class="flex-shrink-0 dropdown-notifications-actions">
-                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                    <div class="d-flex">
-                      <div class="flex-shrink-0 me-3">
-                        <div class="avatar">
-                          <span class="avatar-initial rounded-circle bg-label-danger">CF</span>
-                        </div>
-                      </div>
-                      <div class="flex-grow-1">
-                        <h6 class="mb-1">Charles Franklin</h6>
-                        <p class="mb-0">Accepted your connection</p>
-                        <small class="text-muted">12hr ago</small>
-                      </div>
-                      <div class="flex-shrink-0 dropdown-notifications-actions">
-                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                    <div class="d-flex">
-                      <div class="flex-shrink-0 me-3">
-                        <div class="avatar">
-                          <img src="{% static 'assets//img/avatars/2.png'%}" alt class="w-px-40 h-auto rounded-circle">
-                        </div>
-                      </div>
-                      <div class="flex-grow-1">
-                        <h6 class="mb-1">New Message ✉️</h6>
-                        <p class="mb-0">You have new message from Natalie</p>
-                        <small class="text-muted">1h ago</small>
-                      </div>
-                      <div class="flex-shrink-0 dropdown-notifications-actions">
-                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                    <div class="d-flex">
-                      <div class="flex-shrink-0 me-3">
-                        <div class="avatar">
-                          <span class="avatar-initial rounded-circle bg-label-success"><i class="bx bx-cart"></i></span>
-                        </div>
-                      </div>
-                      <div class="flex-grow-1">
-                        <h6 class="mb-1">Whoo! You have new order 🛒 </h6>
-                        <p class="mb-0">ACME Inc. made new order $1,154</p>
-                        <small class="text-muted">1 day ago</small>
-                      </div>
-                      <div class="flex-shrink-0 dropdown-notifications-actions">
-                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                    <div class="d-flex">
-                      <div class="flex-shrink-0 me-3">
-                        <div class="avatar">
-                          <img src="{% static 'assets//img/avatars/9.png'%}" alt class="w-px-40 h-auto rounded-circle">
-                        </div>
-                      </div>
-                      <div class="flex-grow-1">
-                        <h6 class="mb-1">Application has been approved 🚀 </h6>
-                        <p class="mb-0">Your ABC project application has been approved.</p>
-                        <small class="text-muted">2 days ago</small>
-                      </div>
-                      <div class="flex-shrink-0 dropdown-notifications-actions">
-                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                    <div class="d-flex">
-                      <div class="flex-shrink-0 me-3">
-                        <div class="avatar">
-                          <span class="avatar-initial rounded-circle bg-label-success"><i class="bx bx-pie-chart-alt"></i></span>
-                        </div>
-                      </div>
-                      <div class="flex-grow-1">
-                        <h6 class="mb-1">Monthly report is generated</h6>
-                        <p class="mb-0">July monthly financial report is generated </p>
-                        <small class="text-muted">3 days ago</small>
-                      </div>
-                      <div class="flex-shrink-0 dropdown-notifications-actions">
-                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                    <div class="d-flex">
-                      <div class="flex-shrink-0 me-3">
-                        <div class="avatar">
-                          <img src="{% static 'assets//img/avatars/5.png'%}" alt class="w-px-40 h-auto rounded-circle">
-                        </div>
-                      </div>
-                      <div class="flex-grow-1">
-                        <h6 class="mb-1">Send connection request</h6>
-                        <p class="mb-0">Peter sent you connection request</p>
-                        <small class="text-muted">4 days ago</small>
-                      </div>
-                      <div class="flex-shrink-0 dropdown-notifications-actions">
-                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                    <div class="d-flex">
-                      <div class="flex-shrink-0 me-3">
-                        <div class="avatar">
-                          <img src="{% static 'assets//img/avatars/6.png" alt class="w-px-40 h-auto rounded-circle">
-                        </div>
-                      </div>
-                      <div class="flex-grow-1">
-                        <h6 class="mb-1">New message from Jane</h6>
-                        <p class="mb-0">Your have new message from Jane</p>
-                        <small class="text-muted">5 days ago</small>
-                      </div>
-                      <div class="flex-shrink-0 dropdown-notifications-actions">
-                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                    <div class="d-flex">
-                      <div class="flex-shrink-0 me-3">
-                        <div class="avatar">
-                          <span class="avatar-initial rounded-circle bg-label-warning"><i class="bx bx-error"></i></span>
-                        </div>
-                      </div>
-                      <div class="flex-grow-1">
-                        <h6 class="mb-1">CPU is running high</h6>
-                        <p class="mb-0">CPU Utilization Percent is currently at 88.63%,</p>
-                        <small class="text-muted">5 days ago</small>
-                      </div>
-                      <div class="flex-shrink-0 dropdown-notifications-actions">
-                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li class="dropdown-menu-footer border-top">
-                <a href="javascript:void(0);" class="dropdown-item d-flex justify-content-center p-3">
-                  View all notifications
-                </a>
-              </li>
-            </ul>
-          </li>
-          <!--/ Notification -->
-          <!-- User -->
-          <li class="nav-item navbar-dropdown dropdown-user dropdown">
-            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-              <div class="avatar avatar-online">
-                <img src="{% static 'assets//img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
-              </div>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li>
-                <a class="dropdown-item" href="pages-account-settings-account.html">
-                  <div class="d-flex">
-                    <div class="flex-shrink-0 me-3">
-                      <div class="avatar avatar-online">
-                        <img src="{% static 'assets//img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
-                      </div>
-                    </div>
-                    <div class="flex-grow-1">
-                      <span class="fw-semibold d-block">John Doe</span>
-                      <small class="text-muted">Admin</small>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <div class="dropdown-divider"></div>
-              </li>
-              <li>
-                <a class="dropdown-item" href="pages-profile-user.html">
-                  <i class="bx bx-user me-2"></i>
-                  <span class="align-middle">My Profile</span>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="pages-account-settings-account.html">
-                  <i class="bx bx-cog me-2"></i>
-                  <span class="align-middle">Settings</span>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="pages-account-settings-billing.html">
-                  <span class="d-flex align-items-center align-middle">
-                    <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                    <span class="flex-grow-1 align-middle">Billing</span>
-                    <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <div class="dropdown-divider"></div>
-              </li>
-              <li>
-                <a class="dropdown-item" href="pages-help-center-landing.html">
-                  <i class="bx bx-support me-2"></i>
-                  <span class="align-middle">Help</span>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="pages-faq.html">
-                  <i class="bx bx-help-circle me-2"></i>
-                  <span class="align-middle">FAQ</span>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="pages-pricing.html">
-                  <i class="bx bx-dollar me-2"></i>
-                  <span class="align-middle">Pricing</span>
-                </a>
-              </li>
-              <li>
-                <div class="dropdown-divider"></div>
-              </li>
-              <li>
-                <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
-                  <i class="bx bx-power-off me-2"></i>
-                  <span class="align-middle">Log Out</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <!--/ User -->
-          
-
-        </ul>
       </div>
-
-      
-      <!-- Search Small Screens -->
-      <div class="navbar-search-wrapper search-input-wrapper  d-none">
-        <input type="text" class="form-control search-input container-xxl border-0" placeholder="Search..." aria-label="Search...">
-        <i class="bx bx-x bx-sm search-toggler cursor-pointer"></i>
-      </div>
-      
-      
-  </nav>
-  
+    <!--/ User -->
+  </ul>
+</div>
+</nav>
 
   
 <!-- / Navbar -->
@@ -834,17 +428,18 @@
   <div class="col-12">
     <div class="card mb-4">
       <div class="user-profile-header-banner">
-        <img src="{% static 'assets//img/pages/profile-banner.png" alt="Banner image" class="rounded-top">
       </div>
       <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
         <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
-          <img src="{% static 'assets//img/avatars/1.png" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+<img src="data:image/png;base64,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"/>
         </div>
         <div class="flex-grow-1 mt-3 mt-sm-5">
           <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
             <div class="user-profile-info">
-              <h4>John Doe</h4>
-              <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
+              <h2> {{form.username}} </h2>
+              <h6 class="d-flex align-items-center mb-3"><i >Role : </i>         {% if request.user.is_superuser%} SuperUser {%endif%}  {% if  request.user.is_manager %} Manager {%endif%} {% if  request.user.is_worker %} Worker {%endif%} </span>
+              </h6>
+              {% comment %} <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                 <li class="list-inline-item fw-semibold">
                   <i class='bx bx-pen'></i> UX Designer
                 </li>
@@ -854,11 +449,9 @@
                 <li class="list-inline-item fw-semibold">
                   <i class='bx bx-calendar-alt'></i> Joined April 2021
                 </li>
-              </ul>
+              </ul> {% endcomment %}
             </div>
-            <a href="javascript:void(0)" class="btn btn-primary text-nowrap">
-              <i class='bx bx-user-check me-1'></i>Connected
-            </a>
+         
           </div>
         </div>
       </div>
@@ -872,9 +465,6 @@
   <div class="col-md-12">
     <ul class="nav nav-pills flex-column flex-sm-row mb-4">
       <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class='bx bx-user me-1'></i> Profile</a></li>
-      <li class="nav-item"><a class="nav-link" href="pages-profile-teams.html"><i class='bx bx-group me-1'></i> Teams</a></li>
-      <li class="nav-item"><a class="nav-link" href="pages-profile-projects.html"><i class='bx bx-grid-alt me-1'></i> Projects</a></li>
-      <li class="nav-item"><a class="nav-link" href="pages-profile-connections.html"><i class='bx bx-link-alt me-1'></i> Connections</a></li>
     </ul>
   </div>
 </div>
@@ -888,26 +478,23 @@
       <div class="card-body">
         <small class="text-muted text-uppercase">About</small>
         <ul class="list-unstyled mb-4 mt-3">
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-semibold mx-2">Full Name:</span> <span>John Doe</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-semibold mx-2">Full Name:</span> <span>{{form.first_name}} {{form.last_name}}</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-semibold mx-2">Username:</span> <span>{{form.username}} </span></li>
           <li class="d-flex align-items-center mb-3"><i class="bx bx-check"></i><span class="fw-semibold mx-2">Status:</span> <span>Active</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-star"></i><span class="fw-semibold mx-2">Role:</span> <span>Developer</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-flag"></i><span class="fw-semibold mx-2">Country:</span> <span>USA</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-star"></i><span class="fw-semibold mx-2">Role:</span> <span>         {% if request.user.is_superuser%} SuperUser {%endif%}  {% if  request.user.is_manager %} Manager {%endif%} {% if  request.user.is_worker %} Worker {%endif%} </span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-flag"></i><span class="fw-semibold mx-2">Country:</span> <span>India</span></li>
           <li class="d-flex align-items-center mb-3"><i class="bx bx-detail"></i><span class="fw-semibold mx-2">Languages:</span> <span>English</span></li>
         </ul>
         <small class="text-muted text-uppercase">Contacts</small>
         <ul class="list-unstyled mb-4 mt-3">
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-phone"></i><span class="fw-semibold mx-2">Contact:</span> <span>(123) 456-7890</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-chat"></i><span class="fw-semibold mx-2">Skype:</span> <span>john.doe</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-envelope"></i><span class="fw-semibold mx-2">Email:</span> <span>john.doe@example.com</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-phone"></i><span class="fw-semibold mx-2">Contact:</span> <span>(+91)  {{form.mob}}</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-envelope"></i><span class="fw-semibold mx-2">Email:</span> <span>{{form.email}}</span></li>
+          <li class="d-flex align-items-center mb-3"><i class='bx bxs-edit-location' ></i><span class="fw-semibold mx-2">Address:</span> <span> {{form.address}}</span> </span></li>
+
         </ul>
-        <small class="text-muted text-uppercase">Teams</small>
+        <small class="text-muted text-uppercase">Changes</small>
         <ul class="list-unstyled mt-3 mb-0">
-          <li class="d-flex align-items-center mb-3"><i class="bx bxl-github text-primary me-2"></i>
-            <div class="d-flex flex-wrap"><span class="fw-semibold me-2">Backend Developer</span><span>(126 Members)</span></div>
-          </li>
-          <li class="d-flex align-items-center"><i class="bx bxl-react text-info me-2"></i>
-            <div class="d-flex flex-wrap"><span class="fw-semibold me-2">React Developer</span><span>(98 Members)</span></div>
-          </li>
+          <a  href="{% url 'UserUpdateView' form.id %}"  class="btn btn-primary me-2">Change Detail</a>
         </ul>
       </div>
     </div>
@@ -918,8 +505,6 @@
         <small class="text-muted text-uppercase">Overview</small>
         <ul class="list-unstyled mt-3 mb-0">
           <li class="d-flex align-items-center mb-3"><i class="bx bx-check"></i><span class="fw-semibold mx-2">Task Compiled:</span> <span>13.5k</span></li>
-          <li class="d-flex align-items-center mb-3"><i class='bx bx-customize'></i><span class="fw-semibold mx-2">Projects Compiled:</span> <span>146</span></li>
-          <li class="d-flex align-items-center"><i class="bx bx-user"></i><span class="fw-semibold mx-2">Connections:</span> <span>897</span></li>
         </ul>
       </div>
     </div>
@@ -931,17 +516,7 @@
       <div class="card-header align-items-center">
         <h5 class="card-action-title mb-0"><i class='bx bx-list-ul me-2'></i>Activity Timeline</h5>
         <div class="card-action-element">
-          <div class="dropdown">
-            <button type="button" class="btn dropdown-toggle hide-arrow p-0" data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-vertical-rounded"></i></button>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="javascript:void(0);">Share timeline</a></li>
-              <li><a class="dropdown-item" href="javascript:void(0);">Suggest edits</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="javascript:void(0);">Report bug</a></li>
-            </ul>
-          </div>
+         
         </div>
       </div>
       <div class="card-body">
@@ -956,7 +531,7 @@
               <p class="mb-2">Project meeting with john @10:15am</p>
               <div class="d-flex flex-wrap">
                 <div class="avatar me-3">
-                  <img src="{% static 'assets//img/avatars/3.png" alt="Avatar" class="rounded-circle" />
+                  <img src="{% static 'assets//img/avatars/3.png'%}" alt="Avatar" class="rounded-circle" />
                 </div>
                 <div>
                   <h6 class="mb-0">Lester McCarthy (Client)</h6>
@@ -982,14 +557,14 @@
                 <h6 class="mb-0">Shared 2 New Project Files</h6>
                 <small class="text-muted">6 Day Ago</small>
               </div>
-              <p class="mb-2">Sent by Mollie Dixon <img src="{% static 'assets//img/avatars/4.png" class="rounded-circle ms-3" alt="avatar" height="20" width="20"></p>
+              <p class="mb-2">Sent by Mollie Dixon <img src="{% static 'assets//img/avatars/4.png'%}" class="rounded-circle ms-3" alt="avatar" height="20" width="20"></p>
               <div class="d-flex flex-wrap gap-2">
                 <a href="javascript:void(0)" class="me-3">
-                  <img src="{% static 'assets//img/icons/misc/pdf.png" alt="Document image" width="20" class="me-2">
+                  <img src="{% static 'assets//img/icons/misc/pdf.png'%}" alt="Document image" width="20" class="me-2">
                   <span class="h6">App Guidelines</span>
                 </a>
                 <a href="javascript:void(0)">
-                  <img src="{% static 'assets//img/icons/misc/doc.png" alt="Excel image" width="20" class="me-2">
+                  <img src="{% static 'assets//img/icons/misc/doc.png'%}" alt="Excel image" width="20" class="me-2">
                   <span class="h6">Testing Results</span>
                 </a>
               </div>
@@ -1014,241 +589,14 @@
     <!--/ Activity Timeline -->
     <div class="row">
       <!-- Connections -->
-      <div class="col-lg-12 col-xl-6">
-        <div class="card card-action mb-4">
-          <div class="card-header align-items-center">
-            <h5 class="card-action-title mb-0">Connections</h5>
-            <div class="card-action-element">
-              <div class="dropdown">
-                <button type="button" class="btn dropdown-toggle hide-arrow p-0" data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-vertical-rounded"></i></button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item" href="javascript:void(0);">Share connections</a></li>
-                  <li><a class="dropdown-item" href="javascript:void(0);">Suggest edits</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="javascript:void(0);">Report bug</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <ul class="list-unstyled mb-0">
-              <li class="mb-3">
-                <div class="d-flex align-items-start">
-                  <div class="d-flex align-items-start">
-                    <div class="avatar me-3">
-                      <img src="{% static 'assets//img/avatars/2.png" alt="Avatar" class="rounded-circle" />
-                    </div>
-                    <div class="me-2">
-                      <h6 class="mb-0">Cecilia Payne</h6>
-                      <small class="text-muted">45 Connections</small>
-                    </div>
-                  </div>
-                  <div class="ms-auto">
-                    <button class="btn btn-label-primary btn-icon btn-sm"><i class="bx bx-user"></i></button>
-                  </div>
-                </div>
-              </li>
-              <li class="mb-3">
-                <div class="d-flex align-items-start">
-                  <div class="d-flex align-items-start">
-                    <div class="avatar me-3">
-                      <img src="{% static 'assets//img/avatars/3.png" alt="Avatar" class="rounded-circle" />
-                    </div>
-                    <div class="me-2">
-                      <h6 class="mb-0">Curtis Fletcher</h6>
-                      <small class="text-muted">1.32k Connections</small>
-                    </div>
-                  </div>
-                  <div class="ms-auto">
-                    <button class="btn btn-primary btn-icon btn-sm"><i class="bx bx-user"></i></button>
-                  </div>
-                </div>
-              </li>
-              <li class="mb-3">
-                <div class="d-flex align-items-start">
-                  <div class="d-flex align-items-start">
-                    <div class="avatar me-3">
-                      <img src="{% static 'assets//img/avatars/10.png" alt="Avatar" class="rounded-circle" />
-                    </div>
-                    <div class="me-2">
-                      <h6 class="mb-0">Alice Stone</h6>
-                      <small class="text-muted">125 Connections</small>
-                    </div>
-                  </div>
-                  <div class="ms-auto">
-                    <button class="btn btn-primary btn-icon btn-sm"><i class="bx bx-user"></i></button>
-                  </div>
-                </div>
-              </li>
-              <li class="mb-3">
-                <div class="d-flex align-items-start">
-                  <div class="d-flex align-items-start">
-                    <div class="avatar me-3">
-                      <img src="{% static 'assets//img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                    </div>
-                    <div class="me-2">
-                      <h6 class="mb-0">Darrell Barnes</h6>
-                      <small class="text-muted">456 Connections</small>
-                    </div>
-                  </div>
-                  <div class="ms-auto">
-                    <button class="btn btn-label-primary btn-icon btn-sm"><i class="bx bx-user"></i></button>
-                  </div>
-                </div>
-              <li class="mb-3">
-                <div class="d-flex align-items-start">
-                  <div class="d-flex align-items-start">
-                    <div class="avatar me-3">
-                      <img src="{% static 'assets//img/avatars/12.png" alt="Avatar" class="rounded-circle" />
-                    </div>
-                    <div class="me-2">
-                      <h6 class="mb-0">Eugenia Moore</h6>
-                      <small class="text-muted">1.2k Connections</small>
-                    </div>
-                  </div>
-                  <div class="ms-auto">
-                    <button class="btn btn-label-primary btn-icon btn-sm"><i class="bx bx-user"></i></button>
-                  </div>
-                </div>
-              </li>
-              <li class="text-center">
-                <a href="javascript:;">View all connections</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      
       <!--/ Connections -->
       <!-- Teams -->
-      <div class="col-lg-12 col-xl-6">
-        <div class="card card-action mb-4">
-          <div class="card-header align-items-center">
-            <h5 class="card-action-title mb-0">Teams</h5>
-            <div class="card-action-element">
-              <div class="dropdown">
-                <button type="button" class="btn dropdown-toggle hide-arrow p-0" data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-vertical-rounded"></i></button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item" href="javascript:void(0);">Share teams</a></li>
-                  <li><a class="dropdown-item" href="javascript:void(0);">Suggest edits</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="javascript:void(0);">Report bug</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <ul class="list-unstyled mb-0">
-              <li class="mb-3">
-                <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-start">
-                    <div class="avatar me-3">
-                      <img src="{% static 'assets//img/icons/brands/react-label.png" alt="Avatar" class="rounded-circle" />
-                    </div>
-                    <div class="me-2">
-                      <h6 class="mb-0">React Developers</h6>
-                      <small class="text-muted">72 Members</small>
-                    </div>
-                  </div>
-                  <div class="ms-auto">
-                    <a href="javascript:;"><span class="badge bg-label-danger">Developer</span></a>
-                  </div>
-                </div>
-              </li>
-              <li class="mb-3">
-                <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-start">
-                    <div class="avatar me-3">
-                      <img src="{% static 'assets//img/icons/brands/support-label.png" alt="Avatar" class="rounded-circle" />
-                    </div>
-                    <div class="me-2">
-                      <h6 class="mb-0">Support Team</h6>
-                      <small class="text-muted">122 Members</small>
-                    </div>
-                  </div>
-                  <div class="ms-auto">
-                    <a href="javascript:;"><span class="badge bg-label-primary">Support</span></a>
-                  </div>
-                </div>
-              </li>
-              <li class="mb-3">
-                <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-start">
-                    <div class="avatar me-3">
-                      <img src="{% static 'assets//img/icons/brands/figma-label.png" alt="Avatar" class="rounded-circle" />
-                    </div>
-                    <div class="me-2">
-                      <h6 class="mb-0">UI Designers</h6>
-                      <small class="text-muted">7 Members</small>
-                    </div>
-                  </div>
-                  <div class="ms-auto">
-                    <a href="javascript:;"><span class="badge bg-label-info">Designer</span></a>
-                  </div>
-                </div>
-              </li>
-              <li class="mb-3">
-                <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-start">
-                    <div class="avatar me-3">
-                      <img src="{% static 'assets//img/icons/brands/vue-label.png" alt="Avatar" class="rounded-circle" />
-                    </div>
-                    <div class="me-2">
-                      <h6 class="mb-0">Vue.js Developers</h6>
-                      <small class="text-muted">289 Members</small>
-                    </div>
-                  </div>
-                  <div class="ms-auto">
-                    <a href="javascript:;"><span class="badge bg-label-danger">Developer</span></a>
-                  </div>
-                </div>
-              </li>
-              <li class="mb-3">
-                <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-start">
-                    <div class="avatar me-3">
-                      <img src="{% static 'assets//img/icons/brands/twitter-label.png" alt="Avatar" class="rounded-circle" />
-                    </div>
-                    <div class="me-w">
-                      <h6 class="mb-0">Digital Marketing</h6>
-                      <small class="text-muted">24 Members</small>
-                    </div>
-                  </div>
-                  <div class="ms-auto">
-                    <a href="javascript:;"><span class="badge bg-label-secondary">Marketing</span></a>
-                  </div>
-                </div>
-              </li>
-              <li class="text-center">
-                <a href="javascript:;">View all teams</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+     
       <!--/ Teams -->
     </div>
     <!-- Projects table -->
-    <div class="card mb-4">
-      <div class="card-datatable table-responsive">
-        <table class="datatables-projects border-top table">
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-              <th>Name</th>
-              <th>Leader</th>
-              <th>Team</th>
-              <th class="w-px-200">Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-    </div>
+ 
     <!--/ Projects table -->
   </div>
 </div>
@@ -1265,21 +613,19 @@
 <footer class="content-footer footer bg-footer-theme">
   <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
     <div class="mb-2 mb-md-0">
-      © <script>
-      document.write(new Date().getFullYear())
-      </script>
-      , made with ❤️ by <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+      ©
+      <script>
+        document.write(new Date().getFullYear());
+      </script>2023
+      
     </div>
     <div>
-      
-      <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-      <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-      
-      <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/" target="_blank" class="footer-link me-4">Documentation</a>
-      
-      
-      <a href="https://themeselection.com/support/" target="_blank" class="footer-link d-none d-sm-inline-block">Support</a>
-      
+      <a class="footer-link me-4">License</a>
+      <a class="footer-link me-4">More Themes</a>
+
+      <a class="footer-link me-4">Documentation</a>
+
+      <a class="footer-link me-4">Support</a>
     </div>
   </div>
 </footer>
@@ -1306,35 +652,31 @@
   <!-- / Layout wrapper -->
 
   
-  <div class="buy-now">
-    <a href="https://themeselection.com/item/sneat-bootstrap-html-admin-template/" target="_blank" class="btn btn-danger btn-buy-now">Buy Now</a>
-  </div>
-  
 
   
 
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->
-  <script src="{% static 'assets//vendor/libs/jquery/jquery.js"></script>
-  <script src="{% static 'assets//vendor/libs/popper/popper.js"></script>
-  <script src="{% static 'assets//vendor/js/bootstrap.js"></script>
-  <script src="{% static 'assets//vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="{% static 'assets//vendor/libs/jquery/jquery.js'%}"></script>
+  <script src="{% static 'assets//vendor/libs/popper/popper.js'%}"></script>
+  <script src="{% static 'assets//vendor/js/bootstrap.js'%}"></script>
+  <script src="{% static 'assets//vendor/libs/perfect-scrollbar/perfect-scrollbar.js'%}"></script>
   
-  <script src="{% static 'assets//vendor/libs/hammer/hammer.js"></script>
-  <script src="{% static 'assets//vendor/libs/i18n/i18n.js"></script>
-  <script src="{% static 'assets//vendor/libs/typeahead-js/typeahead.js"></script>
+  <script src="{% static 'assets//vendor/libs/hammer/hammer.js'%}"></script>
+  <script src="{% static 'assets//vendor/libs/i18n/i18n.js'%}"></script>
+  <script src="{% static 'assets//vendor/libs/typeahead-js/typeahead.js'%}"></script>
   
-  <script src="{% static 'assets//vendor/js/menu.js"></script>
+  <script src="{% static 'assets//vendor/js/menu.js'%}"></script>
   <!-- endbuild -->
 
   <!-- Vendors JS -->
-  <script src="{% static 'assets//vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+  <script src="{% static 'assets//vendor/libs/datatables-bs5/datatables-bootstrap5.js'%}"></script>
 
   <!-- Main JS -->
-  <script src="{% static 'assets//js/main.js"></script>
+  <script src="{% static 'assets//js/main.js'%}"></script>
 
   <!-- Page JS -->
-  <script src="{% static 'assets//js/pages-profile.js"></script>
+  <script src="{% static 'assets//js/pages-profile.js'%}"></script>
   
 </body>
 

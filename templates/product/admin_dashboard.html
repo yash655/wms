@@ -45,9 +45,14 @@
     <link rel="stylesheet" href="{% static 'assets/vendor/libs/apex-charts/apex-charts.css' %}" />
 
     <!-- Page CSS -->
+ <link rel="stylesheet" href="{% static 'fontawesomepro/css/all.min.css' %}"  >
+ <script src="{% static 'fontawesomepro/js/all.min.js' %}"></script>
 
-    <!-- Helpers -->
+     <!-- Helpers -->
     <script src="{% static 'assets/vendor/js/helpers.js' %}"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
@@ -190,12 +195,12 @@
 
                 <ul class="menu-sub ">
                   <li class="menu-item active">
-                    <a href="{% url 'BuyerCreateView' %}" class="menu-link">
+                    <a href="{% url 'manager_signup' %}" class="menu-link">
                       <div data-i18n="Without menu">Add Manager</div>
                     </a>
                   </li>
                   <li class="menu-item active">
-                    <a href="{% url 'BuyerrListView' %}" class="menu-link">
+                    <a href="{% url 'ManagerListView' %}" class="menu-link">
                       <div data-i18n="Without navbar">Manager List</div>
                     </a>
                   </li>
@@ -283,41 +288,54 @@
           <!-- Navbar -->
 
           <nav
-            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-            id="layout-navbar"
-          >
-            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                <i class="bx bx-menu bx-sm"></i>
-              </a>
-            </div>
+          class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+          id="layout-navbar"
+        >
+          <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+              <i class="bx bx-menu bx-sm"></i>
+            </a>
+          </div>
 
-            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-             
-
-              <ul class="navbar-nav flex-row align-items-center ms-auto">
+          <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
            
-                
-                
-                  <div class="dropdown">
-                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                        <div class="avatar avatar-online">
-                          <img src="{% static 'assets/img/avatars/1.png' %}" alt class="w-px-40 h-auto rounded-circle" />
+
+            <ul class="navbar-nav flex-row align-items-center ms-auto">
+         
+              
+              
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                      <div class="avatar avatar-online">
+                       <img src="data:image/png;base64,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"/>                                </div>
+                  </button>
+                  <div class="dropdown-menu">
+                    
+                      <a class="dropdown-item" href="{% url 'UserDetailView' request.user.id %}">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="data:image/png;base64,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"/>                              </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <h5><span class="fw-semibold d-block text-primary">{{request.user}}</span><h5>
+                          </div>
                         </div>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href=""
-                        ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                      >
-                      <a class="dropdown-item" href=""
-                        ><i class="bx bx-trash me-1"></i> Delete</a
-                      >
-                    </div>
+                      </a>
+                   
+                    <a class="dropdown-item" href="{% url 'logout' %}">
+                   
+                    <a  class="dropdown-item" href="{% url 'logout' %}"
+
+                      ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAXpJREFUSEvtll9OwkAQxr9p12e5idxAr+CzrsIBWuRRqgkm9pmkHgC08d0bADcoN8Ab6HvbNduyofwRdotNY0Kf2mZ2frs7880MoaaHauLif4H9wXuT7ORU97YoST7vu+150d7oxP3BsHHC2BgCTV3o0o5GnnvdVt9G4OeXcEQCt+bQfAURLnsO/8jeTZz4QTgBcC6AmSDc6a61BMaZrcCT1+H90mAAU8/lF7pgPwjFEbwzxlkWW6zvdXgWTxXjSq9aahV2KpNipuIp/6UsbVix9eV1r6I/j7EfvLUAGi4cGyXSts1oJdeGVgkRCaEtnZ57M12H7wQfVpWWKM/lG3mzF8xsNiHgTDd22+yMwcrJ+lWbVqlHh8vqtvJoxTiXTQ3Jpba6kJPcfVSUk2yHIrG/K5GTgtdSQH7RY9adKq1cR/BKkzCsZgKUS6zsIFDb6COzvGx1E4TXB4e3VO4YzVxFjcv2qFtaWRzPDxpvdUE6dqVOrON4n01t4B+8jhAudK2G7AAAAABJRU5ErkJggg=="/> 
+                      Logout</a
+                    >
                   </div>
-                <!--/ User -->
-              </ul>
-            </div>
-          </nav>
+                </div>
+              <!--/ User -->
+            </ul>
+          </div>
+        </nav>
 
           <!-- / Navbar -->
 
@@ -332,11 +350,10 @@
                     <div class="d-flex align-items-end row">
                       <div class="col-sm-7">
                         <div class="card-body">
-                          <h5 class="card-title text-primary">Today's Total sales 🎉 : 20k</h5>
+                          <h5 class="card-title text-primary">Total sales 🎉 :{{qty.total1}}</h5>
                           <p class="mb-4">
-                            You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                            your profile.
-                          </p>
+                            Welcome {{request.user}} !
+                          </p> 
 
                         </div>
                       </div>
@@ -356,37 +373,33 @@
                 </div>
                 <div class="col-lg-4 col-md-4 order-1">
                   <div class="row">
-                    <div class="col-lg-6 col-md-12 col-6 mb-4">
+                    <div class="col-6 mb-4">
                       <div class="card">
                         <div class="card-body">
                           <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="avatar flex-shrink-0">
-                              <img
-                                src="{% static 'assets/img/icons/unicons/chart-success.png' %}"
-                                alt="chart success"
-                                class="rounded"
-                              />
+                              <img src="{% static 'assets/img/icons/unicons/cc-primary.png' %}" alt="Credit Card" class="rounded" />
                             </div>
                             <div class="dropdown">
                               <button
                                 class="btn p-0"
                                 type="button"
-                                id="cardOpt3"
+                                id="cardOpt4"
                                 data-bs-toggle="dropdown"
                                 aria-haspopup="true"
                                 aria-expanded="false"
                               >
                                 <i class="bx bx-dots-vertical-rounded"></i>
                               </button>
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
+                                <a class="dropdown-item" href="{% url 'PurchaseListView' %}">View More</a>
+                               
                               </div>
                             </div>
                           </div>
-                          <span class="fw-semibold d-block mb-1">Profit</span>
-                          <h3 class="card-title mb-2">₹12,628</h3>
-                          <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
+                          <span class="d-block mb-1">Total Purchase</span>
+                          <h3 class="card-title text-nowrap mb-2">{{pur.totalpur}}</h3>
+
                         </div>
                       </div>
                     </div>
@@ -413,14 +426,12 @@
                                 <i class="bx bx-dots-vertical-rounded"></i>
                               </button>
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                <a class="dropdown-item" href="{% url 'SalesListView' %}">View More</a>
                               </div>
                             </div>
                           </div>
                           <span>Sales</span>
-                          <h3 class="card-title text-nowrap mb-1">₹4,679</h3>
-                          <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
+                          <h5 class="card-title text-nowrap mb-1">₹{{qty.tsales}}</h5>
                         </div>
                       </div>
                     </div>
@@ -487,33 +498,36 @@
                 <!--/ Total Revenue -->
                 <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
                   <div class="row">
-                    <div class="col-6 mb-4">
+                   
+                    <div class="col-lg-6 col-md-12 col-6 mb-4">
                       <div class="card">
                         <div class="card-body">
                           <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="avatar flex-shrink-0">
-                              <img src="{% static 'assets/img/icons/unicons/paypal.png' %}" alt="Credit Card" class="rounded" />
+                              <img
+                                src="{% static 'assets/img/icons/unicons/chart-success.png' %}"
+                                alt="chart success"
+                                class="rounded"
+                              />
                             </div>
                             <div class="dropdown">
                               <button
                                 class="btn p-0"
                                 type="button"
-                                id="cardOpt4"
+                                id="cardOpt3"
                                 data-bs-toggle="dropdown"
                                 aria-haspopup="true"
                                 aria-expanded="false"
                               >
                                 <i class="bx bx-dots-vertical-rounded"></i>
                               </button>
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                <a class="dropdown-item" href="{% url 'ProductListView' %}">View More</a>
                               </div>
                             </div>
                           </div>
-                          <span class="d-block mb-1">Payments</span>
-                          <h3 class="card-title text-nowrap mb-2">₹2,456</h3>
-                          <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
+                          <span class="fw-semibold d-block mb-1">Availables total qty</span>
+                          <h3 class="card-title mb-2">{{x.tqty}}</h3>
                         </div>
                       </div>
                     </div>
@@ -522,7 +536,8 @@
                         <div class="card-body">
                           <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="avatar flex-shrink-0">
-                              <img src="{% static 'assets/img/icons/unicons/cc-primary.png' %}" alt="Credit Card" class="rounded" />
+                              <img src="{% static 'assets/img/icons/unicons/paypal.png' %}" alt="Credit Card" class="rounded" />
+
                             </div>
                             <div class="dropdown">
                               <button
@@ -536,14 +551,12 @@
                                 <i class="bx bx-dots-vertical-rounded"></i>
                               </button>
                               <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                <a class="dropdown-item" href="{% url 'SalesListView' %}">View More</a>
                               </div>
                             </div>
                           </div>
-                          <span class="fw-semibold d-block mb-1">Transactions</span>
-                          <h3 class="card-title mb-2">₹14,857</h3>
-                          <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
+                          <span class="fw-semibold d-block mb-1">payments</span>
+                          <h3 class="card-title mb-2">{{qty.tsales}}</h3>
                         </div>
                       </div>
                     </div>
@@ -555,14 +568,13 @@
                           <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                             <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                               <div class="card-title">
-                                <h5 class="text-nowrap mb-2">Profile Report</h5>
-                                <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+                                <span class="badge bg-label-warning rounded-pill"> </span>
                               </div>
                               <div class="mt-sm-auto">
                                 <small class="text-success text-nowrap fw-semibold"
-                                  ><i class="bx bx-chevron-up"></i> 68.2%</small
+                                  ><i class="bx bx-chevron-up"></i> </small
                                 >
-                                <h3 class="mb-0 b">₹84k</h3>
+                                <h3 class="mb-0 b"></h3>
                               </div>
                             </div>
                             <div id="profileReportChart"></div>
@@ -579,8 +591,8 @@
                   <div class="card h-100">
                     <div class="card-header d-flex align-items-center justify-content-between pb-0">
                       <div class="card-title mb-0">
-                        <h5 class="m-0 me-2">Categorys</h5>
-                        <small class="text-muted">42.82k Total Sales</small>
+                        <h5 class="m-0 me-2">Categories</h5>
+                        <small class="text-muted">{{qty.total1}} Total Sales</small>
                       </div>
                       <div class="dropdown">
                         <button
@@ -621,7 +633,7 @@
                               <h6 class="mb-0">{{i.c_name}}</h6>
                             </div>
                             <div class="user-progress">
-                              <small class="fw-semibold">2.5k</small>
+                              <small class="fw-semibold"></small>
                             </div>
                           </div>
                         </li>

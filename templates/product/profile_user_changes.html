@@ -1,0 +1,572 @@
+{% load static %}
+{% load widget_tweaks %}
+
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed " dir="ltr" data-theme="theme-default" data-assets-path="{% static 'assets' %}" data-template="vertical-menu-template">
+
+<head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon/favicon.ico' %}" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/boxicons.css' %}" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/css/core.css' %}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{% static 'assets/vendor/css/theme-default.css' %}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{% static 'assets/css/demo.css' %}" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'assets/vendor/libs/apex-charts/apex-charts.css' %}" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="{% static 'assets/vendor/js/helpers.js' %}"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="{% static 'assets/js/config.js' %}"></script>
+  </head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>User Profile - Profile | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    
+    <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
+    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
+    <!-- Canonical SEO -->
+    <link rel="canonical" href="https://themeselection.com/item/sneat-bootstrap-html-admin-template/">
+
+    <!-- Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5DDHKGP');</script>
+    <!-- End Google Tag Manager -->
+
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets//img/favicon/favicon.ico '%}" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/boxicons.css'%}" />
+    <link rel="stylesheet" href="{% static 'assets//vendor/fonts/fontawesome.css'%}" />
+    <link rel="stylesheet" href="{% static 'assets//vendor/fonts/flag-icons.css'%}" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="{% static 'assets//vendor/css/rtl/core.css'%}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{% static 'assets//vendor/css/rtl/theme-default.css'%}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{% static 'assets//css/demo.css'%}" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="{% static 'assets//vendor/libs/perfect-scrollbar/perfect-scrollbar.css'%}" />
+    <link rel="stylesheet" href="{% static 'assets//vendor/libs/typeahead-js/typeahead.css'%}" />
+    <link rel="stylesheet" href="{% static 'assets//vendor/libs/datatables-bs5/datatables.bootstrap5.css'%}">
+<link rel="stylesheet" href="{% static 'assets//vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css'%}">
+<link rel="stylesheet" href="{% static 'assets//vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css'%}">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="{% static 'assets//vendor/css/pages/page-profile.css'%}" />
+    <!-- Helpers -->
+    <script src="{% static 'assets//vendor/js/helpers.js'%}"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+    <script src="{% static 'assets//vendor/js/template-customizer.js'%}"></script>
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="{% static 'assets//js/config.js'%}"></script>
+</head>
+
+<body>
+
+  
+  <!-- Google Tag Manager (noscript) (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+  <!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar  ">
+  <div class="layout-container">
+
+    
+    
+
+
+
+
+<!-- Menu -->
+
+  <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+      <div class="app-brand demo">
+        <a href="{% url 'dash' %}" class="app-brand-link ">
+          <img  src="{% static 'assets/img/favicon/wms1.ico' %}" />
+
+          <span class="app-brand-text demo menu-text fw-bolder ms-2">wms</span>
+        </a>
+
+    
+      </div>
+
+      <div class="menu-inner-shadow"></div>
+
+      <ul class="menu-inner py-1">
+        <!-- Dashboard -->
+        <li class="menu-item ">
+          <a href="{% url 'dash' %}" class="menu-link ">
+            <i class="menu-icon tf-icons bx bx-home-circle  "  ></i>
+            <div data-i18n="Analytics">Dashboard</div>
+          </a>
+        </li>
+
+        <!-- Layouts -->
+      
+
+        <li class="menu-header small text-uppercase">
+          <span class="menu-header-text">Pages</span>
+        </li>
+        <li class="menu-item ">
+          <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-layout"></i>
+            <div data-i18n="Layouts">Category</div>
+          </a>
+
+          <ul class="menu-sub ">
+            <li class="menu-item active">
+              <a href="{% url 'CategoryCreateView' %}" class="menu-link">
+                <div data-i18n="Without menu">Add Category</div>
+              </a>
+            </li>
+            <li class="menu-item active">
+              <a href="{% url 'CategoryListView' %}" class="menu-link">
+                <div data-i18n="Without navbar">Category List</div>
+              </a>
+            </li>
+          
+          </ul>
+        </li>
+
+
+
+
+
+        <li class="menu-item ">
+          <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-layout"></i>
+            <div data-i18n="Layouts">Products</div>
+          </a>
+
+          <ul class="menu-sub ">
+            <li class="menu-item active">
+              <a href="{% url 'ProductCreateView' %}" class="menu-link">
+                <div data-i18n="Without menu">Add Product</div>
+              </a>
+            </li>
+            <li class="menu-item active">
+              <a href="{% url 'ProductListView' %}" class="menu-link">
+                <div data-i18n="Without navbar">Product List</div>
+              </a>
+            </li>
+          
+          </ul>
+        </li>
+        <li class="menu-item">
+          {% if not request.user.is_worker %}
+          <!-- Components -->
+          <li class="menu-header small text-uppercase"><span class="menu-header-text">Buyer/Supplier</span></li>
+          <!-- Cards -->
+          <li class="menu-item ">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-layout"></i>
+              <div data-i18n="Layouts">Buyers</div>
+            </a>
+
+            <ul class="menu-sub ">
+              <li class="menu-item active">
+                <a href="{% url 'BuyerCreateView' %}" class="menu-link">
+                  <div data-i18n="Without menu">Add Buyers</div>
+                </a>
+              </li>
+              <li class="menu-item active">
+                <a href="{% url 'BuyerrListView' %}" class="menu-link">
+                  <div data-i18n="Without navbar">Buyers List</div>
+                </a>
+              </li>
+            
+            </ul>
+          </li>
+
+          <li class="menu-item ">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-layout"></i>
+              <div data-i18n="Layouts">Supplier</div>
+            </a>
+
+            <ul class="menu-sub ">
+              <li class="menu-item active">
+                <a href="{% url 'SupplierCreateView' %}" class="menu-link">
+                  <div data-i18n="Without menu">Add Supplier</div>
+                </a>
+              </li>
+              <li class="menu-item active">
+                <a href="{% url 'SupplierListView' %}" class="menu-link">
+                  <div data-i18n="Without navbar">Supplier List</div>
+                </a>
+              </li>
+            
+            </ul>
+          </li>
+
+          <li class="menu-header small text-uppercase"><span class="menu-header-text">Manager/Worker</span></li>
+          <!-- Cards -->
+          {% if request.user.is_superuser%}
+          <li class="menu-item ">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-layout"></i>
+              <div data-i18n="Layouts">Manager</div>
+            </a>
+
+            <ul class="menu-sub ">
+              <li class="menu-item active">
+                <a href="{% url 'manager_signup' %}" class="menu-link">
+                  <div data-i18n="Without menu">Add Manager</div>
+                </a>
+              </li>
+              <li class="menu-item active">
+                <a href="{% url 'ManagerListView' %}" class="menu-link">
+                  <div data-i18n="Without navbar">Manager List</div>
+                </a>
+              </li>
+            
+            </ul>
+          </li>
+          {% endif%}
+        
+
+          <li class="menu-item ">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-layout"></i>
+              <div data-i18n="Layouts">Worker</div>
+            </a>
+
+            <ul class="menu-sub ">
+              <li class="menu-item active">
+                <a href="{% url 'worker_signup' %}" class="menu-link">
+                  <div data-i18n="Without menu">Add Worker</div>
+                </a>
+              </li>
+              <li class="menu-item active">
+                <a href="{% url 'worker' %}" class="menu-link">
+                  <div data-i18n="Without menu">Worker List</div>
+                </a>
+              </li>
+
+            
+            </ul>
+          </li>
+          <!-- User interface -->
+          {% endif %}
+
+        <!-- Forms & Tables -->
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">INVOICE</span></li>
+        <!-- Forms -->
+        
+        <li class="menu-item">
+          <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-detail"></i>
+            <div data-i18n="Form Layouts">Purchase Order</div>
+          </a>
+          <ul class="menu-sub">
+            <li class="menu-item active">
+              <a href="{% url 'PurchaseCreateView' %}" class="menu-link">
+                <div data-i18n="Vertical Form">Add Purchase Order</div>
+              </a>
+            </li>
+            <li class="menu-item active">
+              <a href="{% url 'PurchaseListView' %}" class="menu-link">
+                <div data-i18n="Horizontal Form">Purchase Order List</div>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="menu-item">
+          <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-detail"></i>
+            <div data-i18n="Form Layouts">Sales Order</div>
+          </a>
+          <ul class="menu-sub">
+            <li class="menu-item active">
+              <a href="{% url 'SalesCreateView' %}" class="menu-link">
+                <div data-i18n="Vertical Form">Add Sales Order</div>
+              </a>
+            </li>
+            <li class="menu-item active">
+              <a href="{% url 'SalesListView' %}" class="menu-link">
+                <div data-i18n="Horizontal Form">Sales Order List</div>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- Tables -->
+
+        <!-- Misc -->
+        
+      
+      </ul>
+  </aside>
+<!-- / Menu -->
+
+    
+
+    <!-- Layout container -->
+    <div class="layout-page">
+      
+      
+
+
+
+<!-- Navbar -->
+
+<nav
+class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+id="layout-navbar"
+>
+<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+  <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+    <i class="bx bx-menu bx-sm"></i>
+  </a>
+</div>
+
+<div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+ 
+
+  <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+    
+    
+      <div class="dropdown">
+        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+            <div class="avatar avatar-online">
+             <img src="data:image/png;base64,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"/>                                </div>
+        </button>
+        <div class="dropdown-menu">
+          
+            <a class="dropdown-item" href="{% url 'UserDetailView' request.user.id %}">
+              <div class="d-flex">
+                <div class="flex-shrink-0 me-3">
+                  <div class="avatar avatar-online">
+                    <img src="data:image/png;base64,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"/>                              </div>
+                </div>
+                <div class="flex-grow-1">
+                  <h5><span class="fw-semibold d-block text-primary">{{request.user}}</span><h5>
+                </div>
+              </div>
+            </a>
+         
+          <a class="dropdown-item" href="{% url 'logout' %}"
+         
+          <a  class="dropdown-item" href="{% url 'logout' %}"
+            ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAXpJREFUSEvtll9OwkAQxr9p12e5idxAr+CzrsIBWuRRqgkm9pmkHgC08d0bADcoN8Ab6HvbNduyofwRdotNY0Kf2mZ2frs7880MoaaHauLif4H9wXuT7ORU97YoST7vu+150d7oxP3BsHHC2BgCTV3o0o5GnnvdVt9G4OeXcEQCt+bQfAURLnsO/8jeTZz4QTgBcC6AmSDc6a61BMaZrcCT1+H90mAAU8/lF7pgPwjFEbwzxlkWW6zvdXgWTxXjSq9aahV2KpNipuIp/6UsbVix9eV1r6I/j7EfvLUAGi4cGyXSts1oJdeGVgkRCaEtnZ57M12H7wQfVpWWKM/lG3mzF8xsNiHgTDd22+yMwcrJ+lWbVqlHh8vqtvJoxTiXTQ3Jpba6kJPcfVSUk2yHIrG/K5GTgtdSQH7RY9adKq1cR/BKkzCsZgKUS6zsIFDb6COzvGx1E4TXB4e3VO4YzVxFjcv2qFtaWRzPDxpvdUE6dqVOrON4n01t4B+8jhAudK2G7AAAAABJRU5ErkJggg=="/> 
+            Logout</a
+          >
+        </div>
+      </div>
+    <!--/ User -->
+  </ul>
+</div>
+</nav>
+
+<!-- / Navbar -->
+
+      
+
+      <!-- Content wrapper -->
+      <div class="content-wrapper">
+
+        <!-- Content -->
+        
+          <div class="container-xxl flex-grow-1 container-p-y">
+            
+            
+<h4 class="fw-bold py-3 mb-4">
+  <span class="text-muted fw-light">User Profile /</span> Profile
+</h4>
+
+
+<!-- Header -->
+
+<!--/ Header -->
+
+<!-- Navbar pills -->
+<div class="row">
+  <div class="col-md-12">
+    <ul class="nav nav-pills flex-column flex-sm-row mb-4">
+      <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class='bx bx-user me-1'></i> Profile</a></li>
+    </ul>
+  </div>
+</div>
+<!--/ Navbar pills -->
+
+<!-- User Profile Content -->
+<div class="card mb-4">
+    <h5 class="card-header">Profile Details</h5>
+    <!-- Account -->
+    <div class="card-body">
+   
+    <div class="card-body">
+      <form method="POST"  class="fv-plugins-bootstrap5 fv-plugins-framework" >
+        {% csrf_token %}
+
+        <div class="row">
+          <div class="mb-3 col-md-6 fv-plugins-icon-container">
+            {{form.first_name | as_crispy_field}}
+            
+          <div class="fv-plugins-message-container invalid-feedback"></div></div>
+          <div class="mb-3 col-md-6 fv-plugins-icon-container">
+            {{form.last_name | as_crispy_field}}
+          
+          <div class="fv-plugins-message-container invalid-feedback"></div></div>
+          <div class="mb-3 col-md-6">
+            {{form.username | as_crispy_field}}
+
+          </div>
+          <div class="mb-3 col-md-6">
+            {{form.email | as_crispy_field}}
+
+          </div>
+          <div class="mb-3 col-md-6">
+            {{form.mob | as_crispy_field}}
+
+          </div>
+         
+          <div class="mb-3 col-md-6">
+            {{form.address | as_crispy_field}}
+
+          </div>
+      
+        </div>
+        <div class="mt-2">
+          <input type="submit" value ='Save changes' class="btn btn-primary me-2">
+        </div>
+      </form>
+    </div>
+    <!-- /Account -->
+  </div>
+<!--/ User Profile Content -->
+
+            
+          </div>
+          <!-- / Content -->
+
+          
+          
+
+<!-- Footer -->
+<footer class="content-footer footer bg-footer-theme">
+  <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+    <div class="mb-2 mb-md-0">
+      ©
+      <script>
+        document.write(new Date().getFullYear());
+      </script>2023
+      
+    </div>
+    <div>
+      <a class="footer-link me-4">License</a>
+      <a class="footer-link me-4">More Themes</a>
+
+      <a class="footer-link me-4">Documentation</a>
+
+      <a class="footer-link me-4">Support</a>
+    </div>
+  </div>
+</footer>
+<!-- / Footer -->
+
+          
+          <div class="content-backdrop fade"></div>
+        </div>
+        <!-- Content wrapper -->
+      </div>
+      <!-- / Layout page -->
+    </div>
+
+    
+    
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+    
+    
+    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+    <div class="drag-target"></div>
+    
+  </div>
+  <!-- / Layout wrapper -->
+
+  
+
+  
+
+  <!-- Core JS -->
+  <!-- build:js assets/vendor/js/core.js -->
+  <script src="{% static 'assets//vendor/libs/jquery/jquery.js'%}"></script>
+  <script src="{% static 'assets//vendor/libs/popper/popper.js'%}"></script>
+  <script src="{% static 'assets//vendor/js/bootstrap.js'%}"></script>
+  <script src="{% static 'assets//vendor/libs/perfect-scrollbar/perfect-scrollbar.js'%}"></script>
+  
+  <script src="{% static 'assets//vendor/libs/hammer/hammer.js'%}"></script>
+  <script src="{% static 'assets//vendor/libs/i18n/i18n.js'%}"></script>
+  <script src="{% static 'assets//vendor/libs/typeahead-js/typeahead.js'%}"></script>
+  
+  <script src="{% static 'assets//vendor/js/menu.js'%}"></script>
+  <!-- endbuild -->
+
+  <!-- Vendors JS -->
+  <script src="{% static 'assets//vendor/libs/datatables-bs5/datatables-bootstrap5.js'%}"></script>
+
+  <!-- Main JS -->
+  <script src="{% static 'assets//js/main.js'%}"></script>
+
+  <!-- Page JS -->
+  <script src="{% static 'assets//js/pages-profile.js'%}"></script>
+  
+</body>
+
+</html>
+
+<!-- beautify ignore:end -->
+

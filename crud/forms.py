@@ -1,6 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
 from .models import User
 from django.db import transaction
+from django import forms
+
 
 class ManagerSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
@@ -27,3 +29,11 @@ class WorkerSignUpForm(UserCreationForm):
         user.save()
         return user
     
+    
+class UserUpdateForm(forms.ModelForm):
+     class Meta:
+        model = User
+        fields =["username","first_name","last_name","email","mob","address"]
+        widgets = {
+            'address': forms.Textarea(attrs={"rows":3, "cols":10})
+        }
